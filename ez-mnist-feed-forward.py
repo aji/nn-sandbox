@@ -24,7 +24,7 @@ if __name__ == '__main__':
     def fr_onehot(x):
         return np.argmax(x)
 
-    net = nn.Layered(nn.SumOfSquares(), 0.001)
+    net = nn.Layered(nn.SumOfSquares(), 1e-2)
     net.add(nn.Linear(28 * 28, 200))
     net.add(nn.LeakyReLU(200))
     net.add(nn.Linear(200, 200))

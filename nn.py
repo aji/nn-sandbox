@@ -30,7 +30,7 @@ class Linear(NetworkUnit):
     ''' linear transformation '''
 
     def __init__(self, insize, outsize):
-        self._w = 0.01 * (np.random.rand(outsize, insize) - 0.5)
+        self._w = 1e-1 * (np.random.rand(outsize, insize) - 0.5)
 
     def forward(self, x):
         return np.dot(self._w, x), None
@@ -39,7 +39,7 @@ class Linear(NetworkUnit):
         return np.dot(self._w.T, dy), np.outer(dy, x)
 
     def train(self, dws, learn):
-        self._w -= np.clip(sum(dws), -5., 5.) * learn
+        self._w -= np.clip(sum(dws), -1., 1.) * learn
 
 class LeakyReLU(NetworkUnit):
     ''' leaky ReLU '''
@@ -56,7 +56,7 @@ class LeakyReLU(NetworkUnit):
         return dx, db
 
     def train(self, dws, learn):
-        self._b -= np.clip(sum(dws), -5., 5.) * learn
+        self._b -= np.clip(sum(dws), -1., 1.) * learn
 
 class Tanh(NetworkUnit):
     ''' hyperbolic tangent '''
@@ -73,7 +73,7 @@ class Tanh(NetworkUnit):
         return dx, db
 
     def train(self, dws, learn):
-        self._b -= np.clip(sum(dws), -5., 5.) * learn
+        self._b -= np.clip(sum(dws), -1., 1.) * learn
 
 class CostFunction(object):
     def cost(self, label, y):
