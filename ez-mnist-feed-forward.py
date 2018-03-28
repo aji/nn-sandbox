@@ -25,11 +25,11 @@ if __name__ == '__main__':
         return np.argmax(x)
 
     net = nn.Layered(nn.SumOfSquares(), 1e-2)
-    net.add(nn.Linear(28 * 28, 200))
-    net.add(nn.LeakyReLU(200))
-    net.add(nn.Linear(200, 200))
-    net.add(nn.LeakyReLU(200))
-    net.add(nn.Linear(200, 10))
+    net.add(nn.Linear(28 * 28, 100))
+    net.add(nn.LeakyReLU(100))
+    net.add(nn.Linear(100, 100))
+    net.add(nn.LeakyReLU(100))
+    net.add(nn.Linear(100, 10))
     net.add(nn.Tanh(10))
 
     all_examples = [(x, to_onehot(y)) for x, y in zip(images, labels)]
