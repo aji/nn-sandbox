@@ -4,7 +4,7 @@ import random
 import nn
 
 def random_subsets(xs, n):
-    indices = list(range(n))
+    indices = list(range(len(xs)))
     ys = []
     while True:
         random.shuffle(indices)
